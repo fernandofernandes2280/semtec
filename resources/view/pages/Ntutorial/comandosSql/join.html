@@ -1,0 +1,95 @@
+    
+                    <p>Este comando serve para juntar duas ou mais tabelas, baseadas em uma relação entre algumas colunas das tabelas envolvidas, através da utilização das chaves primárias e estrangeiras.</p>
+                    <p>Para trabalhar com os próximos comandos, crie  algumas tabelas que irão ser utilizadas para fazer mais sentido aos resultados. Vejamos elas:</p>
+                    <p><strong>TBL_FUNCIONARIO</strong></p>
+                    <table border="1">
+                    <tbody>
+                    <tr>
+                    <td><span style="text-decoration: underline;"><strong>id_func</strong></span><strong> (PK)</strong></td>
+                    <td><strong>nome</strong></td>
+                    <td><strong>salario</strong></td>
+                    <td><strong>id_depto (FK)</strong></td>
+                    </tr>
+                    <tr>
+                    <td>1</td>
+                    <td>Diego</td>
+                    <td>2500</td>
+                    <td>345</td>
+                    </tr>
+                    <tr>
+                    <td>2</td>
+                    <td>Maria</td>
+                    <td>5500</td>
+                    <td>456</td>
+                    </tr>
+                    <tr>
+                    <td>3</td>
+                    <td>João</td>
+                    <td>4000</td>
+                    <td>567</td>
+                    </tr>
+                    <tr>
+                    <td>4</td>
+                    <td>José</td>
+                    <td>8000</td>
+                    <td>123</td>
+                    </tr>
+                    <tr>
+                    <td>5</td>
+                    <td>Marcos</td>
+                    <td>4500</td>
+                    <td>567</td>
+                    </tr>
+                    <tr>
+                    <td>6</td>
+                    <td>Cristina</td>
+                    <td>1000</td>
+                    <td>(NULL)</td>
+                    </tr>
+                    </tbody>
+                    </table>
+<br>
+                    <p><strong>TBL_DEPTO</strong></p>
+                    <table border="1">
+                    <tbody>
+                    <tr>
+                    <td><span style="text-decoration: underline;"><strong>id_depto</strong></span><strong> (PK)</strong></td>
+                    <td><strong>nome</strong></td>
+                    <td><strong>ramal</strong></td>
+                    </tr>
+                    <tr>
+                    <td>123</td>
+                    <td>Diretoria</td>
+                    <td>9999</td>
+                    </tr>
+                    <tr>
+                    <td>456</td>
+                    <td>Gerência</td>
+                    <td>8888</td>
+                    </tr>
+                    <tr>
+                    <td>345</td>
+                    <td>T.I.</td>
+                    <td>5555</td>
+                    </tr>
+                    <tr>
+                    <td>567</td>
+                    <td>Comercial</td>
+                    <td>6666</td>
+                    </tr>
+                    <tr>
+                    <td>987</td>
+                    <td>Vendas</td>
+                    <td>1111</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <p>Agora vamos continuar os estudos.</p>
+                    <p>Existem diferentes tipos de JOINS, os quais são:</p>
+                    <ul>
+                    <li><strong>JOIN</strong> &#8211; Retorna os registros das tabelas quando pelo menos um deles se relacionam;</li>
+                    <li><strong>LEFT JOIN</strong> &#8211; Retorna todos os registros da tabela da esquerda, mesmo que não exista combinação com alguma linha da tabela da direita;</li>
+                    <li><strong>RIGHT JOIN</strong> &#8211; O inverso do LEFT JOIN em relação as tabelas;</li>
+                    <li><strong>FULL JOIN</strong> &#8211; Retorna todos os registros, mesmo quando não existe uma relação entre as tabelas;</li>
+                    </ul>
+  

@@ -1,0 +1,57 @@
+
+<div class="col-10" style="margin-top: 80px;">
+	<div class="row">
+		<div class="col-5" >
+			<h5>{{title}}</h5>
+		</div>
+ 		<div class="col-4 " >
+		</div>	
+		<div class="col-3 text-right pl-0 ">
+		<a href="{{URL}}/feriados/new">
+				<button type="button" class="btn btn-success btn-round btn-sm " rel="tooltip" title="Novo">
+					<i class="material-icons" style="font-size: 20px;">add</i>
+				</button>
+		</a>
+			<a href="{{URL}}/feriados">
+				<button type="button" class="btn btn-warning btn-round btn-sm " rel="tooltip" title="Voltar">
+					<i class="material-icons" style="font-size: 20px;">reply</i>
+				</button>
+			</a>
+		</div>
+	</div>
+
+	<form method="post">
+		<div >
+			<label>Data</label>
+			<input type="date"name="data" class="form-control" value="{{data}}" required>
+		</div>
+		 <div>
+      		<label for="nome">Tipo:</label>
+	       <select class="custom-select select-search" id="nome" name="nome" >
+	       		<option {{selectedFeriado}} value="FERIADO">FERIADO</option>
+	       		<option {{selectedFacultado}} value="FACULTADO">FACULTADO</option>
+	 	  	</select>
+    	</div>
+		
+		<div >
+			<label>Descrição</label>
+			<input type="text"name="descricao" class="form-control" value="{{descricao}}" required>
+		</div>
+		
+		<div class="form-group mt-3">
+			<button class="btn btn-primary btn-sm btn-round botao borda" type="submit" rel="tooltip" title="Salvar">
+		     	<i class="material-icons botao" >save</i>
+		     </button>
+		</div>
+	
+	</form>
+	</div>
+	<div class="col-3"></div>
+
+
+
+
+<!-- Div onde aparecem as mensagens -->
+    <div id="toastBox"></div>
+    
+    

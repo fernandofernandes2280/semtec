@@ -1,0 +1,43 @@
+
+                    <p>Retorna os registros quando existe pelo menos uma relação entre as tabelas. Se executarmos o comando abaixo:</p>
+                    <pre>SELECT f.nome, f.salario, d.nome AS depto
+                    FROM tbl_funcionario AS f
+                    INNER JOIN tbl_depto AS d
+                    ON f.id_depto = d.id_depto
+                    ORDER BY d.nome ASC, f.nome ASC;</pre>
+                    <p>Dica: Quando utilizamos o &#8220;AS&#8221;, ele definirá um apelido para o atributo ou tabela, o qua facilita o entendimento de onde estamos selecionando os dados. Veja que &#8220;f.nome&#8221; é o nome da tabela tbl_funcionarios, f.salario é o atributo salário da tbl_funcionarios e o d.nome é o nome do departamento da tbl_depto. Bem útil para facilitar o entendimento.</p>
+                    <p>Teremos a seguinte resposta desta consulta:</p>
+                    <table width="400" border="1">
+                    <tbody>
+                    <tr>
+                    <td><strong>nome</strong></td>
+                    <td><strong>salario</strong></td>
+                    <td><strong>depto</strong></td>
+                    </tr>
+                    <tr>
+                    <td>João</td>
+                    <td>4000</td>
+                    <td>Comercial</td>
+                    </tr>
+                    <tr>
+                    <td>Marcos</td>
+                    <td>4500</td>
+                    <td>Comercial</td>
+                    </tr>
+                    <tr>
+                    <td>José</td>
+                    <td>8000</td>
+                    <td>Diretoria</td>
+                    </tr>
+                    <tr>
+                    <td>Maria</td>
+                    <td>5500</td>
+                    <td>Gerência</td>
+                    </tr>
+                    <tr>
+                    <td>Diego</td>
+                    <td>2500</td>
+                    <td>T.I.</td>
+                    </tr>
+                    </tbody>
+                    </table>

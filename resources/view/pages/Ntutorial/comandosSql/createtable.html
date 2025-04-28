@@ -1,0 +1,195 @@
+<p>Para trabalharmos com BD, precisamos das tabelas que armazenam os dados. Para isso, precisamos criá-las, seguinte a estrutura abaixo:</p>
+<pre>CREATE TABLE tabela (</pre>
+<pre>nome_atributo tipo_dado opções,</pre>
+<pre>... ... ...,</pre>
+<pre>nome_atributo tipo_dado opções);</pre>
+<p>Os atributos das tabelas precisam ser definidos com os seus tipos, seguindo os tipos abaixo:</p>
+<table border="1px">
+<tbody>
+<tr>
+<td><strong>Tipo de Dados</strong></td>
+<td><strong>Longitude</strong></td>
+<td><strong>Descrição</strong></td>
+</tr>
+<tr>
+<td>BINARY</td>
+<td>1 byte</td>
+<td>Para consultas sobre tabela anexa de produtos de banco de dados que definem um tipo de dados Binário.</td>
+</tr>
+<tr>
+<td>BIT</td>
+<td>1 byte</td>
+<td>Valores Sim/Não ou True/False</td>
+</tr>
+<tr>
+<td>BYTE</td>
+<td>1 byte</td>
+<td>Um valor inteiro entre 0 e 255.</td>
+</tr>
+<tr>
+<td>COUNTER</td>
+<td>4 bytes</td>
+<td>Um número incrementado automaticamente (de tipo Long)</td>
+</tr>
+<tr>
+<td>CURRENCY</td>
+<td>8 bytes</td>
+<td>Um inteiro escalável entre 922.337.203.685.477,5808 e 922.337.203.685.477,5807.</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>8 bytes</td>
+<td>Um valor de data ou hora entre os anos 100 e 9999.</td>
+</tr>
+<tr>
+<td>SINGLE</td>
+<td>4 bytes</td>
+<td>Um valor em ponto flutuante de precisão simples com uma classificação de &#8211; 3.402823*1038 a -1.401298*10-45 para valores negativos, 1.401298*10- 45 a 3.402823*1038 para valores positivos, e 0.</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>8 bytes</td>
+<td>Um valor em ponto flutuante de dupla precisão com uma classificação de &#8211; 1.79769313486232*10308 a -4.94065645841247*10-324 para valores negativos, 4.94065645841247*10-324 a 1.79769313486232*10308 para valores positivos, e 0.</td>
+</tr>
+<tr>
+<td>SHORT</td>
+<td>2 bytes</td>
+<td>Um inteiro curto entre -32,768 e 32,767.</td>
+</tr>
+<tr>
+<td>LONG</td>
+<td>4 bytes</td>
+<td>Um inteiro longo entre -2,147,483,648 e 2,147,483,647.</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>1 byte por caractere</td>
+<td>De zero a um máximo de 1.2 gigabytes.</td>
+</tr>
+<tr>
+<td>LONGBINARY</td>
+<td>Segundo se necessite</td>
+<td>De zero 1 gigabyte. Utilizado para objetos OLE.</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>1 byte por caractere</td>
+<td>De zero a 255 caracteres.</td>
+</tr>
+</tbody>
+</table>
+<p>A tabela de sinônimos dos tipos de dados:</p>
+<table border="1px">
+<tbody>
+<tr>
+<td><strong>Tipo de Dado</strong></td>
+<td><strong>Sinônimos</strong></td>
+</tr>
+<tr>
+<td>BINARY</td>
+<td>VARBINARY</td>
+</tr>
+<tr>
+<td>BIT</td>
+<td>BOOLEAN<br />
+LOGICAL<br />
+LOGICAL1<br />
+YESNO</td>
+</tr>
+<tr>
+<td>BYTE</td>
+<td>INTEGER1</td>
+</tr>
+<tr>
+<td>COUNTER</td>
+<td>AUTOINCREMENT</td>
+</tr>
+<tr>
+<td>CURRENCY</td>
+<td>MONEY</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>DATE<br />
+TIME<br />
+TIMESTAMP</td>
+</tr>
+<tr>
+<td>SINGLE</td>
+<td>FLOAT4<br />
+IEEESINGLE<br />
+REAL</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>FLOAT<br />
+FLOAT8<br />
+IEEEDOUBLE<br />
+NUMBER<br />
+NUMERIC</td>
+</tr>
+<tr>
+<td>SHORT</td>
+<td>INTEGER2<br />
+SMALLINT</td>
+</tr>
+<tr>
+<td>LONG</td>
+<td>INT<br />
+INTEGER<br />
+INTEGER4</td>
+</tr>
+<tr>
+<td>LONGBINARY</td>
+<td>GENERAL<br />
+OLEOBJECT</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>LONGCHAR<br />
+MEMO<br />
+NOTE</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>ALPHANUMERIC<br />
+CHAR &#8211; CHARACTER<br />
+STRING &#8211; VARCHAR</td>
+</tr>
+<tr>
+<td>VARIANT (Não Admitido)</td>
+<td>VALUE</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>Vejamos alguns exemplos de comandos prontos: </p>
+<p style=" font-weight: bold;">OBS: Quando for inserir o comando ao lado, não esqueça de selecionar um Banco de Dados!</p>
+<pre>As próximas tabelas deverão ser criada no banco de dados "ESCOLA".</pre>
+<pre>
+CREATE TABLE tblprofessor(
+codprofessor INT,
+nome VARCHAR (50),
+endereco VARCHAR (50),
+telefone VARCHAR (15),
+nascimento DATE,
+sexo VARCHAR (1),
+observacao VARCHAR (100));</pre>
+<pre>
+CREATE TABLE tblaluno(
+codaluno INT,
+nome VARCHAR (50),
+endereco VARCHAR (50),
+telefone VARCHAR (15),
+nascimento DATE,
+sexo VARCHAR (1),
+observacao VARCHAR (100));</pre>
+<pre>
+CREATE TABLE tblnotas(
+codnota INT,
+codaluno INT,
+nota1 INT,
+nota2 INT,
+nota3 INT,
+nota4 INT);</pre>
+

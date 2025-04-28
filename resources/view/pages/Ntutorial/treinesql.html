@@ -1,0 +1,42 @@
+ 
+ <div class="card card-nav-tabs " >
+  <div class="card-header card-header-success">
+    <strong>Treine Aqui os Comandos SQL:</strong> 
+  </div>
+  <div class="card-body text-light">
+     <form id="formresposta" name="formresposta" onsubmit="return false">
+       <table class="table" style="font-weight: bold;">
+           
+           <tr>
+               <td>
+                    <label><font font size=3>Banco: </font><span id="banco" name="banco">{{nomeBanco}}</span></label>
+           			
+               </td>
+           </tr>
+           <tr>
+               <td colspan="2">
+                   <textarea class="form-control" rows="5" name="resposta" id="resposta"  style="font-size: 100%" OnPaste="return naoColarTexto();" placeholder="Digite aqui os comandos SQL"></textarea>
+               </td>
+           </tr>
+           <tr>
+               <td>
+                   <input type="hidden" name="oculto" value="efetuar"/>
+                  
+                   <button rel="tooltip" title="executar SQL (F2)" class="btn btn-warning btn-sm" name="executar" id="executar"><i class="material-icons" style="font-size: 30px;">bolt</i></button>
+                   <button rel="tooltip" title="limpar (Esc)"class="btn btn-danger btn-sm" name="limpar" id="limpar"><i class="material-icons" style="font-size: 30px;">close</i></button>
+                   
+                  
+               </td>
+           </tr>
+       </table>
+       <div class="row" style="margin-left: 5px;">
+           <label><font font size=3>Resultado:</font></label>
+           <div class="" style="overflow: auto; height: 40%; width: 95%"  id="resultado" name="resultado" >
+           </div>
+       </div>
+   </form>
+	</div>
+</div>
+ 
+
+ 

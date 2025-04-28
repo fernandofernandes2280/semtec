@@ -1,0 +1,22 @@
+
+<p>Parar cadastrar os dados em nossas tabelas, utilizamos a estrutura abaixo:</p>
+<pre>INSERT INTO nome_tabela (</pre>
+<pre>nome_campo1, nome_campo2, ..., nome_campoN)</pre>
+<pre>VALUES (</pre>
+<pre>valor_campo1, valor_campo2, ..., valor_campoN</pre>
+<pre>);</pre>
+<p>Exemplos:</p>
+<pre>INSERT INTO tblprofessor VALUES (1,'Marcos da Silva', 'Rua das Flores,85', '9911-8956', '1976/05/01','M','especialista em libras');
+INSERT INTO tblprofessor (codprofessor,nome,endereco,telefone,nascimento,sexo) VALUES (2,'Raimunda Campos', 'Rua 01 de maio,42', '8111-4523', '1970/03/30','f');
+INSERT INTO tblprofessor (codprofessor,nome,endereco,telefone,nascimento,sexo) VALUES (3,'Wando Araujo', 'Rua Ver. Arnaldo,15', '8112-7856', '1977/04/25','M'), (4,'Maria das Graças', 'Rua Mato grosso,150', '2356-7526', '1969/08/15','F'),(5,'Pablo Souza', 'Av. Nacional,23', '2332-7854', '1981/10/03','M');
+</pre>
+<pre>INSERT INTO tblaluno VALUES (1,'Joao Cardoso', 'Rua Hildemar Maia,25', '2356-7852', '1990/06/23','M','Altista');
+INSERT INTO tblaluno (codaluno,nome,endereco,telefone,nascimento,sexo) VALUES (2,'MARCIA CRISTINA SILVA', 'Rua da Bacadas,02', '1254-7412', '1995/05/15','F');
+INSERT INTO tblaluno (codaluno,nome,endereco,telefone,nascimento,sexo) VALUES (3,'Andre de Padua', 'Rua Goitacazes,56', '9263-4586', '1989/06/22','M'), (4,'Carla Pereira', 'Rua jardins,63', '9632-2374', '1992/03/05','F'),(5,'Marcelo Boulhosa', 'Rua Setentrional,889', '8156-7496', '1992/12/20','M');
+</pre>
+<pre>INSERT INTO tblnotas VALUES (1,1,6,7,6,8);
+INSERT INTO tblnotas (codnota, codaluno, nota1, nota2, nota3, nota4 ) VALUES (2,2,9,5,7,8);
+INSERT INTO tblnotas (codnota, codaluno, nota1, nota2, nota3, nota4 ) VALUES (3,3,5,6,9,3), (4,4,10,7,8,7), (4,4,9,7,10,8), (5,5,7,5,8,4);
+</pre>
+
+

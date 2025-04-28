@@ -1,0 +1,71 @@
+
+<div style="margin-top: 80px;">
+    <div class="col-12">
+        <h4 class="card-title"></h4>
+        
+        <div class="row">
+            <div class="col-9 card-title">
+                <h5>{{title}}</h5>
+            </div>
+            <div class="col-3 text-right">
+                <a href="{{URL}}/servidores/new/validaCpf">
+                        <button type="button" class="btn btn-success btn-round btn-sm " rel="tooltip" title="Novo">
+                            <span class="material-icons" style="font-size: 20px">add</span>	
+                        </button>
+                        
+                </a>
+                
+            </div>
+        </div>
+        
+    <hr>
+    <div class="row">
+        <div class="col-12 table-responsive" >
+            <table id="datatablesSimple" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Matrícula</th>
+                        <th>Vínculo</th>
+                        <th>Cargo/Função</th>
+                        <th>Lotação</th>
+                        <th>Local de Trabalho</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Data Nascimento</th>
+                        <th>Data Cadastro</th>
+                        <th>Cpf</th>
+                        <th style="width:200px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{itens}}
+                </tbody>
+            </table>
+            <!--{{pagination}}-->
+        
+        <!-- Div onde aparecem as mensagens -->
+            <div id="toastBox"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+ 
+<p>Já aprendemos a estrutura do SELECT, então vamos acrescentar algumas funcionalidades a este comando e melhorar ainda mais nossas consultas com o ORDER BY, responsável por ordernar nosso resultado capturado de forma crescente ou decrescente baseado nas colunas que quisermos. O WHERE é opcional. Sintaxe básica é:</p>
+<pre>SELECT atributos FROM tabela ORDER BY atributo {ASC / DESC};</pre>
+<p>Os nomes ASC e DESC são opcionais, mas por padrão o ASC é utilizado, pois ele define de forma ascendente (crescente) a lista. O DESC faz o inverso, decrescente.</p>
+<p>Veja os exemplos:</p>
+<pre>SELECT nome, endereco, telefone FROM tblalunos ORDER BY nome;</pre>
+<pre>SELECT nome, endereco, telefone FROM tblalunos ORDER BY nome ASC;</pre>
+<pre>SELECT nome, endereco, telefone FROM tblalunos ORDER BY nome DESC;</pre>
+<pre>SELECT nome, endereco, telefone FROM tblalunos ORDER BY nome ASC, endereco DESC;</pre>
+                    
+

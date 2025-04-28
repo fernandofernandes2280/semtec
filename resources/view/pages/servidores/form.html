@@ -1,0 +1,135 @@
+
+	
+	<div class="col-10" style="margin-top: 80px;">
+	
+		<div class="row" >
+			<div class="col-5" >
+				<h5>{{title}}</h5>
+			</div>
+			<div class="col-4 " >
+			
+				
+			</div>	
+		
+
+			<div class="col-3 text-right pl-0 ">
+			<a href="{{URL}}/servidores/new/validaCpf">
+					<button type="button" class="btn btn-success btn-round btn-sm " rel="tooltip" title="Novo">
+						<i class="material-icons" style="font-size: 20px;">add</i>
+					</button>
+			</a>
+				<a href="{{URL}}/servidores">
+					<button type="button" class="btn btn-warning btn-round btn-sm " rel="tooltip" title="Voltar">
+						<i class="material-icons" style="font-size: 20px;">reply</i>
+					</button>
+				</a>
+			</div>
+		</div>
+
+		<form method="post">
+			<div class="row">
+				<div class="col-8">
+					<label style="padding-bottom: 0px;">Nome</label>
+					<input type="text"name="nome" class="form-control pt-0" value="{{nome}}" required>
+				</div>
+				<div class="col-4">
+					<label>Matrícula</label>
+					<input type="text"name="matricula" class="form-control" value="{{matricula}}" required>
+				</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col-4" >
+					<label>CPF</label>
+					<input type="text"name="cpf" class="form-control" value="{{cpf}}" required readonly>
+				</div>
+			
+				<div class="col-4">
+					<label for="vinculo">Vínculo</label>
+					<select class="custom-select select-search" id="vinculo" name="vinculo" >
+						<option></option>
+						{{optionVinculo}}
+						</select>
+				</div>
+				<div class="col-4">
+					<label for="vinculo">Lotação</label>
+					<select class="custom-select select-search" id="lotacao" name="lotacao" >
+					<option></option>
+						{{optionLotacao}}
+					</select>
+				</div>
+			</div>
+			
+			<div class="mt-2">
+				<label for="vinculo">Cargo / Função</label>
+				<select class="select-search custom-select" id="cargoFuncao" name="cargoFuncao" >
+					<option></option>
+						{{optionCargoFuncao}}
+				</select>
+
+				
+			</div>
+			<div class="mt-2">
+				<label for="vinculo">Local de Trabalho</label>
+			<select class="custom-select select-search" id="localTrabalho" name="localTrabalho" >
+					<option></option>
+						{{optionLocalTrabalho}}
+				</select>
+			</div>
+			
+			
+			<div class="mt-2">
+				<label>Email</label>
+				<input type="text"name="email" class="form-control" value="{{email}}" required>
+			</div>
+			<div class="row mt-2">
+				<div class="col-4">
+					<label>Telefone</label>
+					<input type="text"name="telefone" onkeyup="formatarTelefone(this)" maxlength="11" class="form-control" value="{{telefone}}" required placeholder="( )_____-_____">
+				</div>
+				<div class="col-4">
+					<label>Data Nascimento</label>
+					<input type="date"name="dataNasc" class="form-control" value="{{dataNasc}}" required>
+				</div>
+				<div class="col-4">
+					<label>Data Cadastro</label>
+					<input type="date"name="dataCad" class="form-control" value="{{dataCad}}" required>
+				</div>
+			</div>
+			
+			
+			
+			<div class="form-group mt-3">
+				<button class="btn btn-primary btn-sm btn-round botao borda" type="submit" rel="tooltip" title="Salvar">
+					<i class="material-icons botao" >save</i>
+				</button>
+			</div>
+		
+		</form>
+	
+	</div>
+	<!-- Div onde aparecem as mensagens -->
+	<div id="toastBox"></div>
+	
+
+
+
+
+
+    
+    
+<script>
+
+  function formatarTelefone(input) {
+  // Remove todos os caracteres não numéricos
+  var telefone = input.value.replace(/\D/g, '');
+
+  // Insere os parênteses, espaço e traço nos lugares corretos
+  telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2-$3');
+
+  // Atualiza o valor do campo de entrada com o telefone formatado
+  input.value = telefone;
+}
+  </script>
+
+
+

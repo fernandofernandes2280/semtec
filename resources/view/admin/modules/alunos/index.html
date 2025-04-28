@@ -1,0 +1,27 @@
+<h1>Alunos</h1>
+
+<hr>
+
+<a href="{{URL}}/admin/alunos/new">
+	<button type="button" class="btn btn-success">Cadastrar Aluno</button>
+</a>
+<hr>
+
+{{status}}
+
+<table class="table table-light table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>E-mail</th>
+			<th>Instituição</th>
+			<th>Senha</th>
+			<th style="width:200px">Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{itens}}
+	</tbody>
+</table>
+{{pagination}}

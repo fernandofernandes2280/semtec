@@ -1,0 +1,111 @@
+<style>
+
+	table, tr, td, th{
+	border: 1px solid black;
+	border-collapse: collapse; 
+	color: black;
+	}
+
+	.margens {
+		margin-right: 10px;
+		
+		}
+		p {
+        line-height: 1; /* Define o espaçamento entre linhas em 1.5 vezes a altura da fonte */
+    }
+	
+</style>     				
+			<div class="row margens">
+				<div align="center">
+				<img width="9%" src="/resources/assets/img/logoPms.png" class="img-fluid" alt="Logo PMS"><br/>
+					<p>ESTADO DO AMAPÁ<br/>
+					PREFEITURA MUNICIPAL DE SANTANA<br/>
+					SECRETARIA DE TECNOLOGIA, INFORMAÇÃO E TELECOMUNICAÇÃO<br/></p>
+					<p class="font-weight-bold" style="font-size:18px">BOLETIM DE FREQUÊNCIA</p>
+				</div>
+				<table style="font-size:17px; width: 100%;" >
+				<tr class="text-center">
+			        <th colspan="2">FOLHA DE PONTO</th>
+			    </tr>
+			    <tr>
+			        <td style="width:500px" class="pl-2"> <span class="font-weight-bold"> NOME:</span> <span class="cabecalho-ponto">{{nome}}</span></td>
+			        <td class="pl-2"> <span class=" font-weight-bold">MATRÍCULA:</span> <span class="cabecalho-ponto">{{matricula}}</span></td>
+			    </tr>
+			    
+			    <tr>
+			        <td class="pl-2"> <span class="font-weight-bold">CARGO / FUNÇÃO:</span> <span class="cabecalho-ponto">{{cargoFuncao}}</span> </td>
+			        <td class="pl-2"> <span class="font-weight-bold">TIPO VÍNCULO:</span> <span class="cabecalho-ponto">{{vinculo}}</span> </td>
+			    </tr>
+			    
+			    <tr>
+			        <td class="pl-2"> <span class="font-weight-bold">ÓRGÃO DE LOTAÇÃO:</span> <span class="cabecalho-ponto">{{lotacao}}</span></td>
+			        <td class="pl-2"> <span class="font-weight-bold">LOCAL DE TRABALHO:</span> <span class="cabecalho-ponto">{{localTrabalho}}</span></td>
+			    </tr>
+			    
+			    <tr>
+			    	<th colspan="6" class="pl-2"> MÊS: {{data}}</th>
+			    </tr>
+			    </table>
+			    <table width="100%"  class="text-center small" style="font-size:15px;">
+			    <tr>
+			    	<th rowspan="2" style="width:40px;">DIA</th>
+			    	<th rowspan="2" style="width:100px;">SEMANA</th>
+			    	<th colspan="5">HORÁRIO</th>
+			    	<th rowspan="2"style="width:30px">HORAS EXTRAS</th>
+			    	<th rowspan="2" style="width:300px" colspan="4">ASSINATURA DO SERVIDOR</th>			    	
+			    </tr>
+			    <tr>
+			       
+			    	<th style="width:80px">ENTRADA</th>
+			    	<th style="width:80px">SAÍDA</th>
+			    	<th style="width:80px">RÚBRICA</th>
+			    	<th style="width:80px">ENTRADA</th>
+			    	<th style="width:80px">SAÍDA</th>
+			    	
+			    </tr>
+			   
+  			{{diasItens}}
+				
+			<tr>
+				<th class="text-left pl-2" colspan="7">FREQUÊNCIA MENSAL</th>
+			    	<th>0</th>
+			    	<th style="width:70px">Dias:</th>
+			    	<th style="width:70px">{{dias}}</th>
+			    	<th style="width:70px">Horas:</th>
+			    	<th style="width:70px" >0</th>
+			</tr>
+			<tr>
+				<th class="text-left pl-2" colspan="7">TOTAL DE HORAS EXTRAS</th>
+			    	<th>0</th>
+			    	<th></th>
+			    	<th></th>
+			    	<th></th>
+			    	<th></th>
+			</tr>
+			<tr style="font-size:14px;">
+				<th style="width:30px"></th>
+				<th>FALTAS ABONADAS:</th>
+				<th></th>
+				<th>FALTAS NÃO ABONADAS:</th>
+				<th></th>
+				<th colspan="3">FÉRIAS</th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td colspan="12" class="text-left pl-2">CERTIFICO, que a frequência corresponde aos dias trabalhados. Por ser verdade, assino e dato o presente.</td>
+			</tr>
+		   
+			 <tr>
+				<td colspan="12" class="text-left pl-2">DATA: ______/______/______. Assinatura do Responsável:</td>
+			</tr>
+  			
+		</table>
+	</div>
+ <!--Força a quebra de página-->
+	<div style="break-after:page"></div>
+		
+			
+       

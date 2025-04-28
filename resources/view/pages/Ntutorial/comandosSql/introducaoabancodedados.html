@@ -1,0 +1,41 @@
+<label class="titulo" id="introducao">Introdução a Banco de Dados</label>   <p>Para iniciarmos os estudos e entendermos a teoria sobre Banco de Dados, vamos começar pelo entendimento básico sobre os conceitos principais e abordar os pontos-chave do assunto.</p>
+                   
+                    <label class="subTitulo">Banco de Dados Relacional</label>
+                    <p>Este modelo, organiza seus dados em <strong>relações</strong>, onde essas relações podem ser vistas como uma <strong>tabela</strong>, onde cada <strong>coluna</strong> corresponde a <strong>atributos</strong> da relação e as linhas correspondem às <strong>tuplas</strong> ou elementos da relação. Um outro conceito importante é o da <strong>chave</strong>, que permite identificar e diferenciar uma tupla da outra. Através destas chaves, é possível encontrar de forma mais ágil outros elementos através de seus <strong>índices</strong> e estabelecer relacionamentos entre as tabelas.</p>
+                    <p>O modelo relacional permite que você visualize os dados de modo lógico em vez de físico. Em comparação a outros modelos, o modelo relacional é mais fácil de ser compreendido do que os modelos hierárquicos e em rede. A simplicidade lógica tende a produzir metodologias de projetos simples e eficientes.</p>
+                    <p>A linguagem utilizada é o <strong>SQL</strong>.</p>
+                    <label class="subTitulo">Tabelas / Entidades / Relação</label>
+                    <p>Todos os dados ficam armazenados nas tabelas de um Banco de Dados Relacional (BDR). A tabela nada mais é do que o próprio nome está sugerindo, sendo esta uma estrutura bidimensional composta de linhas e colunas com seus dados.</p>
+                    <p>Podemos pensar na tabela como uma representação permanente de uma relação lógica, ou seja, de uma relação cujo conteúdo possa ser salvo definitivamente para uso futuro. Já a palavra entidade, está relacionada a uma <em>tabela que pode conter um grupo de ocorrências de entidades relacionadas</em>, ou seja, um conjunto de entidades. Por exemplo, uma tabela chamada FUNCIONÁRIO contém um conjunto de ocorrências de entidades, cada uma representando um funcionário.</p>
+                    <label class="subTitulo">Colunas / Atributos / Campos</label>
+                    <p>São os campos de um tabela, com nomes diferentes e contém tipos de dados diferentes. Por exemplo: uma tabela FUNCIONÁRIO que contém uma coluna chamada FUNC_NOME.</p>
+
+                    <label class="subTitulo">Linhas / Registros / Tuplas</label>
+                    <p>Cada linha representa um registro diferente, contendo todos os mesmos atributos dentro de uma tabela. Cada linha da tabela descreve uma única ocorrência de entidade no interior do conjunto de entidades.</p>
+                    <label class="subTitulo">Chaves</label>
+                    <p>As tabelas relacionam-se umas as outras através de <strong>chaves</strong>. Uma chave é um conjunto de um ou mais atributos que determinam a unicidade de cada registro. A unicidade dos registros, determinada por sua chave, também é fundamental para a criação dos índices.</p>
+                    <p>A coluna de identificação em uma tabela é chamada de chave ou chave primária. Uma chave também pode consistir em múltiplas colunas. Por exemplo, podemos refirir a um registro específico combinando os campos correpondentes a ele, mas não tendo a garantia de ser única.</p>
+                    <p>Temos dois tipos de chaves:</p>
+                    <ul>
+                    <li><strong>Chave primária:</strong> (<em>PK &#8211; Primary Key</em>) é a chave que identifica cada registro dando-lhe unicidade. A chave primária nunca se repetirá.</li>
+                    <li><strong>Chave Estrangeira:</strong> (<em>FK &#8211; Foreign Key</em>) é a chave formada através de um relacionamento com a chave primária de outra tabela. Define um relacionamento entre as tabelas e pode ocorrer repetidas vezes. Caso a chave primária seja composta na origem, a chave estrangeira também o será.</li>
+                    </ul>
+                    <label class="subTitulo">Índices</label>
+                    <p>O índice é responsável por apontar para o local onde encontraremos a linha que estamos pesquisando, ou seja, é uma disposição ordenada utilizada para acessar logicamente as linhas de uma tabela. Um exemplo de índice, seria o índice de um livro, onde você iria pesquisar o assunto que está querendo ler e iria diretamente para a página que está sendo demonstrada lá.</p>
+                    <p>Olhando pelo lado conceitual do BDR, é composto de uma chave de índice e de um conjunto de ponteiros. Cada chave aponta para a localização dos dados identificados por ela.</p>
+                    <label class="subTitulo">Relacionamentos</label>
+                    <p>Os relacionamentos são associações entre as entidades. As entidades que participam de um relacionamento são também conhecidas como participantes e cada relacionamento é identificado por um nome que o descreve. Utiliza-se o verbo na voz ativa ou passiva. Exemplo: um ALUNO <strong><em>frequenta</em></strong> uma TURMA, um PROFESSOR <strong><em>ensina</em></strong> uma TURMA, um DEPARTAMENTO <strong><em>emprega</em></strong> um PROFESSOR.</p>
+                    <p>Os relacionamento estão sempre em ambas direções:</p>
+                    <ul>
+                    <li>Um CLIENTE pode gerar muitas FATURAS;</li>
+                    <li>Cada FATURA é gerada por apenas um CLIENTE.</li>
+                    </ul>
+                    Existem relacionamentos dos seguintes tipos
+                    
+                    <ul>
+                    <li><strong>Um para um (1 para 1) &#8211;</strong> indica que as tabelas têm relação unívoca entre si. Você escolhe qual tabela vai receber a chave estrangeira;</li>
+                    <li><strong>Um para muitos (1 para N) &#8211;</strong> a chave primária da tabela que tem o lado 1 vai para a tabela do lado N. No lado N ela é chamada de chave estrangeira;</li>
+                    <li><strong>Muitos para muitos (N para N) &#8211;</strong> quando tabelas têm entre si relação n..n, é necessário criar uma nova tabela com as chaves primárias das tabelas envolvidas, ficando assim uma chave composta, ou seja, formada por diversos campos-chave de outras tabelas. A relação então se reduz para uma relação 1..n, sendo que o lado n ficará com a nova tabela criada.</li>
+                    </ul>
+                    <p>Suponha que você tenha um BD simples para manter o inventário que foi projetado para uma loja de conveniência. Uma das tabelas no banco de dados pode conter os preços dos itens em suas prateleiras, indexados por números de referência únicos que identificam cada item. Provavelmente, você teria uma tabela simples com nome de &#8220;Preços&#8221;. Se você precisa identificar todos os itens que tenham um preço acima de R$ 5,00, você pode recuperar a partir do seu BD esta informação utilizando o SQL fazendo uma consulta.</p>
+                    

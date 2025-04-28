@@ -1,0 +1,121 @@
+<label class="titulo" id="select">Realizando CONSULTAS (SELECT)</label>
+<p>Antes de irmos direto ao comando, vamos analisar o que queremos fazer com a tabela. Imagine que você quer selecionar todos os alunos com nota1 maior que 5. Se formos transformar isto em SQL, será tão simples quanto. Veja o comando:</p>
+<pre>SELECT codaluno
+FROM tblaluno
+WHERE nota1 > 5;</pre>
+<p>Muito simples, não? Se você ler o comando, perceberá que é similar ao que queríamos antes.</p>
+<p>Perceba que o comando será sempre similar ao nosso exemplo. Vamos a estrutura genérica do comando.</p>
+<pre>SELECT (atributos da tabela) FROM (nome da tabela) WHERE (condição);</pre>
+<p>Onde os atributos da tabela podem ser escolhidos de qualquer forma: um único atributo, vários ou todos. Veja os exemplos abaixo e descubra o que eles fazem.</p>
+<pre>SELECT nome,endereco,telefone FROM tblprofessor WHERE codprofessor = 3;</pre>
+<pre>SELECT * FROM tblnotas WHERE nota4 > 6;</pre>
+<p>Já vimos como selecionar os atributos que queremos, agora vamos dar uma olhada nas condições do WHERE. É nele que &#8220;filtramos&#8221; os atributos escolhidos. O WHERE é opcional, sendo assim você omití-lo, então você terá todos os registros com os atributos escolhidos. As condições mais comuns são:</p>
+<ul>
+<li>= (igual)</li>
+<li>!= ou &lt;&gt; (diferente)</li>
+<li>&gt; (maior que)</li>
+<li>&lt; (menor que)</li>
+<li>&gt;= (maior ou igual a)</li>
+<li>&lt;= (menor ou igual a)</li>
+<li>LIKE (similar a)</li>
+<li>BETWEEN (entre X e Y)</li>
+<li>IN (vários valores dentro da lista)</li>
+<li>AND (e)</li>
+<li>OR (ou)</li>
+<li>XOR (mistura do OR com</li>
+<li>NOT (negação)</li>
+<li>IS (valores iguais)</li>
+</ul>
+<p>Com exceção dos dois últimos, todos possuem a seguinte sintaxe:</p>
+<pre>&lt;expressao1&gt; operador &lt;expressao2&gt;</pre>
+<p>Veja esta tabela para ajudar a entender melhor algumas condições:</p>
+<table border="1">
+<tbody>
+<tr>
+<td><strong>&lt;expressao1&gt;</strong></td>
+<td>  <strong>Operador</strong></td>
+<td>  <strong>&lt;expressao2&gt;</strong></td>
+<td>   <strong>Resultado</strong></td>
+</tr>
+<tr>
+<td>Verdadeiro</td>
+<td>AND</td>
+<td>Falso</td>
+<td>Falso</td>
+</tr>
+<tr>
+<td>Verdadeiro</td>
+<td>AND</td>
+<td>Verdadeiro</td>
+<td>Verdadeiro</td>
+</tr>
+<tr>
+<td>Falso</td>
+<td>AND</td>
+<td>Verdadeiro</td>
+<td>Falso</td>
+</tr>
+<tr>
+<td>Falso</td>
+<td>AND</td>
+<td>Falso</td>
+<td>Falso</td>
+</tr>
+<tr>
+<td>Verdadeiro</td>
+<td>OR</td>
+<td>Falso</td>
+<td>Verdadeiro</td>
+</tr>
+<tr>
+<td>Verdadeiro</td>
+<td>OR</td>
+<td>Verdadeiro</td>
+<td>Verdadeiro</td>
+</tr>
+<tr>
+<td>Falso</td>
+<td>OR</td>
+<td>Verdadeiro</td>
+<td>Verdadeiro</td>
+</tr>
+<tr>
+<td>Falso</td>
+<td>OR</td>
+<td>Falso</td>
+<td>Falso</td>
+</tr>
+<tr>
+<td>Verdadeiro</td>
+<td>XOR</td>
+<td>Verdadeiro</td>
+<td>Falso</td>
+</tr>
+<tr>
+<td>Verdadeiro</td>
+<td>XOR</td>
+<td>Falso</td>
+<td>Verdadeiro</td>
+</tr>
+<tr>
+<td>Falso</td>
+<td>XOR</td>
+<td>Verdadeiro</td>
+<td>Verdadeiro</td>
+</tr>
+<tr>
+<td>Falso</td>
+<td>XOR</td>
+<td>Falso</td>
+<td>Falso</td>
+</tr>
+</tbody>
+</table>
+<p>Se a qualquer das anteriores condições lhe ante-pusermos o operador NOT o resultado da operação será o contrário ao devolvido sem o operador NOT.</p>
+<p>O último operador denominado IS se emprega para comparar duas variáveis de tipo objeto &lt;Objeto1&gt; IS &lt;Objeto2&gt;. Este operador devolve verdadeiro se os dois objetos forem iguais.</p>
+<p>Podemos utilizar o SELECT para fazer uma seleção com uma soma, por exemplo. Vamos somar todas as notas do aluno codaluno igual a 1</p>
+<pre>SELECT (nota1 + nota2 + nota3 + nota4) FROM tblnotas WHERE codaluno = 1;</pre>
+
+<p>Podemos criar um campo temporário apenas para receber a soma das notas:</p>
+<pre>SELECT (nota1 + nota2 + nota3 + nota4) AS soma FROM tblnotas WHERE codaluno = 1;</pre>
+

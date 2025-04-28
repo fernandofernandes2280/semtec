@@ -1,0 +1,128 @@
+ 
+                    <p>O comando de UNION é usado para combinar os resultados de duas ou mais tabelas. Perceba que cada SELECT deve-se ter o mesmo número de colunas de cada tabela, incluindo o mesmo tipo de dados, assim como devem estar na mesma ordem. Veja a sintaxe:</p>
+                    <pre>SELECT colunas FROM tabela1
+                    UNION
+                    SELECT colunas FROM tabela2;</pre>
+                    <p>Por padrão, o UNION captura apenas valores distintos. Caso queira que ele capture os valores repetidos, deve-se usar o UNION ALL:</p>
+                    <pre>SELECT colunas FROM tabela1
+                    UNION ALL
+                    SELECT colunas FROM tabela2;</pre>
+                    <p>Vejamos um exemplo:</p>
+                    <p><strong>TBL_EMPREGADOS1</strong></p>
+                    <table width="400" border="1">
+                    <tbody>
+                    <tr>
+                    <th align="left" width="25%">ID_EMP</th>
+                    <th align="left" width="35%">Nome_EMP</th>
+                    </tr>
+                    <tr>
+                    <td>01</td>
+                    <td>Hansen, Ola</td>
+                    </tr>
+                    <tr>
+                    <td>02</td>
+                    <td>Svendson, Tove</td>
+                    </tr>
+                    <tr>
+                    <td>03</td>
+                    <td>Svendson, Stephen</td>
+                    </tr>
+                    <tr>
+                    <td>04</td>
+                    <td>Pettersen, Kari</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <p><strong>TBL_EMPREGADOS2</strong></p>
+                    <table width="400" border="1">
+                    <tbody>
+                    <tr>
+                    <th align="left" width="25%">ID_EMP</th>
+                    <th align="left" width="35%">Nome_EMP</th>
+                    </tr>
+                    <tr>
+                    <td>01</td>
+                    <td>Turner, Sally</td>
+                    </tr>
+                    <tr>
+                    <td>02</td>
+                    <td>Kent, Clark</td>
+                    </tr>
+                    <tr>
+                    <td>03</td>
+                    <td>Svendson, Stephen</td>
+                    </tr>
+                    <tr>
+                    <td>04</td>
+                    <td>Scott, Stephen</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <p>O nosso resultado ao utilizar o UNION simples:</p>
+                    <pre>SELECT Nome_EMP FROM tbl_empregados1
+                    UNION
+                    SELECT Nome_EMP FROM tbl_empregados2;</pre>
+                    <table>
+                    <tbody>
+                    <tr>
+                    <th align="left" width="35%"><strong>E_Nome</strong></th>
+                    </tr>
+                    <tr>
+                    <td>Hansen, Ola</td>
+                    </tr>
+                    <tr>
+                    <td>Svendson, Tove</td>
+                    </tr>
+                    <tr>
+                    <td>Svendson, Stephen</td>
+                    </tr>
+                    <tr>
+                    <td>Pettersen, Kari</td>
+                    </tr>
+                    <tr>
+                    <td>Turner, Sally</td>
+                    </tr>
+                    <tr>
+                    <td>Kent, Clark</td>
+                    </tr>
+                    <tr>
+                    <td>Scott, Stephen</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <p>Se utilizarmos o UNION ALL, irá aparecer os valores repetidos:</p>
+                    <pre>SELECT Nome_EMP FROM tbl_empregados1
+                    UNION
+                    SELECT Nome_EMP FROM tbl_empregados2;</pre>
+                    <table>
+                    <tbody>
+                    <tr>
+                    <th align="left" width="35%"><strong>E_Name</strong></th>
+                    </tr>
+                    <tr>
+                    <td>Hansen, Ola</td>
+                    </tr>
+                    <tr>
+                    <td>Svendson, Tove</td>
+                    </tr>
+                    <tr>
+                    <td>Svendson, Stephen</td>
+                    </tr>
+                    <tr>
+                    <td>Pettersen, Kari</td>
+                    </tr>
+                    <tr>
+                    <td>Turner, Sally</td>
+                    </tr>
+                    <tr>
+                    <td>Kent, Clark</td>
+                    </tr>
+                    <tr>
+                    <td>Svendson, Stephen</td>
+                    </tr>
+                    <tr>
+                    <td>Scott, Stephen</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    

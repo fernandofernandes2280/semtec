@@ -1,0 +1,191 @@
+ 
+<p>As restrições são utilizadas para determinar o limite do tipo de dados poderão ser utilizados em uma tabela. Elas podem ser utilizadas quando criamos as tabelas (com o comando CREATE TABLE) ou após criarmos (com o ALTER TABLE).</p>
+<p>As restrições são:</p>
+<ul>
+<li>NOT NULL</li>
+<li>UNIQUE</li>
+<li>PRIMARY KEY</li>
+<li>FOREIGN KEY</li>
+<li>CHECK</li>
+<li>DEFAULT</li>
+</ul>
+<p>Veremos com mais detalhes abaixo cada uma delas.</p>
+<label class="titulo" >NOT NULL</label>
+<p>Com esta restrição, podemos definir que uma coluna NÃO poderá receber valores nulos, ou seja, ficar sem valor algum preenchido. Caso ele esteja definido, não poderemos inserir um registro sem ter a coluna preenchida com algo ou atualizá-la (UPDATE) sem ter um valor definido. Veja o exemplo de como utilizá-lo na criação de uma tabela:</p>
+<pre>CREATE TABLE Pessoas
+(
+id_pessoa int NOT NULL,
+sobrenome varchar(255) NOT NULL,
+nome varchar(255),
+endereco varchar(255),
+cidade varchar(255)
+);</pre>
+<p>Neste exemplo, as colunas id_pessoa e sobrenome não podem receber valor NULL, enquanto nome, endereco e cidade podem receber NULL</p>
+<p>Execute a seguinte instrução para comprovar:</p>
+<pre>
+INSERT INTO Pessoas (nome,endereco,cidade) values
+('joao','Av das Palmeiras','Macapá');
+</pre>
+<p>
+  Para adicionar restições a campos ja existentes use o seguinte comando:
+</p>
+<pre>
+  ALTER TABLE [table name] MODIFY COLUMN [column name] [data type] NULL;
+</pre>
+<p>
+  Exemplo:
+</p>
+<pre>
+  ALTER TABLE tblaluno MODIFY COLUMN codaluno int(11) NOT NULL;
+</pre>
+<p>
+  Este comando modificará o campo codaluno para tipo inteiro, tamanho 11 e não nulo.
+</p>
+
+<br>
+<Label>Para mais informações, acesse a documentação do MySQL 5.7:</label>
+<a href="https://dev.mysql.com/doc/refman/5.7/en/create-table.html
+">https://dev.mysql.com/doc/refman/5.7/en/create-table.html
+</a>
+<br><br>
+
+
+<label class="titulo" >UNIQUE</label>
+<p>Sua função é identificar unicamente cada registro em uma tabela do BD. Esta restrição e a PRIMARY KEY são responsáveis pela unicidade dos valores de uma ou mais colunas. Toda PRIMARY KEY automaticamente tem a restrição UNIQUE definida por padrão. Perceba que você pode ter várias colunas com a restrição UNIQUE definida, mas somente uma PRIMARY KEY por tabela. Veja o exemplo abaixo:</p>
+<pre>CREATE TABLE Agenda
+(
+id_agenda int NOT NULL,
+nome varchar(255) NOT NULL,
+sobrenome varchar(255),
+telefone varchar(9),
+UNIQUE (id_agenda)
+);</pre>
+<p>Insira os seguintes registros na tabela Agenda:</p>
+<pre>
+    INSERT INTO Agenda (id_agenda, nome, sobrenome,telefone) values
+    (1,'Marcos','Oliveira','9125-8965'),
+    (2,'Joana','de Souza','8125-7845'),
+    (3,'Estefani','Cardoso','1236-7856');
+</pre>
+<p>Agora tente inserir o seguinte registro:</p>
+<pre>
+    INSERT INTO Agenda (id_agenda, nome, sobrenome,telefone) values
+    (3,'Ronaldo','Barbosa','8965-1245');
+</pre>
+<p>Irá provocar um erro, pois já existe o registro com id_agenda igual a 3, e tentar introduzir outra linha com esse valor viola a restrição UNIQUE.</p>
+<p>Note que uma coluna que seja especificada como chave primária também deve ser única. Ao mesmo tempo, uma coluna que seja única pode ou não pode ser uma chave primária. Além disso, é possível definir várias restrições UNIQUE numa tabela.</p>
+
+<p>Utilizando após ter a tabela criada, podemos fazer assim:</p>
+<pre>ALTER TABLE Agenda
+ADD UNIQUE (id_agenda);</pre>
+<p>Para remover a restrição UNIQUE:</p>
+<pre>ALTER TABLE Agenda
+DROP INDEX id_agenda;</pre>
+<br>
+<Label>Para mais informações, acesse a documentação do MySQL 5.7:</label>
+<a href="https://dev.mysql.com/doc/refman/5.7/en/create-table.html
+">https://dev.mysql.com/doc/refman/5.7/en/create-table.html
+</a>
+<br><br>
+
+
+<label class="titulo" >PRIMARY KEY (PK)</label>
+<p>Já vimos aqui que a chave primaria (Primary Key &#8211; PK) é responsável por identificar unicamente cada registro de uma tabela do BD. Toda chave primária deve ter um valor único e não pode conter valores nulos (NULL). Uma chave primária pode ser composta por um ou mais campos numa tabela. Quando são utilizados vários campos como chave primária, são denominados por chave composta. Recomenda-se ter apenas UMA chave primária por tabela. Veja o exemplo de como utilizamos na hora de criar uma tabela:</p>
+<pre>CREATE TABLE Produtos
+(
+id_produto int,
+descricao varchar(255),
+quantidade int,
+PRIMARY KEY (id_produto)
+);</pre>
+<p>Utlize o comando Show Columns para ver a estrutura da tabela.</p>
+<p>Definindo a chave primária após ter criado a tabela:</p>
+<pre>ALTER TABLE Produtos
+ADD PRIMARY KEY (id_produto);</pre>
+<p>Removendo a chave primária:</p>
+<pre>ALTER TABLE Produtos
+DROP PRIMARY KEY;</pre>
+
+<br>
+<Label>Para mais informações, acesse a documentação do MySQL 5.7:</label>
+<a href="https://dev.mysql.com/doc/refman/5.7/en/create-table.html
+">https://dev.mysql.com/doc/refman/5.7/en/create-table.html
+</a>
+<br><br>
+
+
+<label class="titulo" >FOREIGN KEY (FK)</label>
+<p>Uma chave externa é um campo (ou campos) que aponta para a chave primária de outra tabela. O objetivo da chave externa é garantir a integridade referencial dos dados Por outras palavras, apenas os valores suportados que supostamente devem aparecer na base de dados são permitidos.</p>
+<p>Por exemplo, suponhamos que temos duas tabelas, uma tabela CLIENTES que inclui todos os dados dos clientes e uma tabela PEDIDOS que inclui todas os pedidos dos clientes. A restrição prende-se com o fato de todos os pedidos deverem ser associadas a um cliente que já esteja na tabela CLIENTES. Nesse caso, iremos colocar uma chave externa na tabela PEDIDOS e fazer com que se relacione com a chave primária da tabela CLIENTES. Deste modo, podemos garantir que todas as encomendas na tabela PEDIDOS estão relacionadas com um cliente na tabela CIENTES. Por outras palavras, a tabela PEDIDOS não pode conter informações sobre um cliente que não se encontre na tabela CLIENTES.</p>
+<p>A estrutura dessas duas tabelas seriam as seguintes:</p>
+<p>tabela CLIENTES:</p>
+<pre>CREATE TABLE Clientes
+(
+id_cliente int,
+nome varchar(60),
+endereco varchar(120),
+PRIMARY KEY (id_cliente)
+);</pre>
+
+<p>tabela PEDIDOS:</p>
+<pre>CREATE TABLE Pedidos
+(
+id_pedido int,
+data_pedido date,
+valor double,
+clienteid_cliente int,
+PRIMARY KEY (id_pedido),
+FOREIGN KEY (clienteid_cliente) REFERENCES clientes(id_cliente));
+</pre>
+<p>Para definirmos após a tabela estar criada:</p>
+<pre>ALTER TABLE Clientes
+ADD FOREIGN KEY (clienteid_cliente)
+REFERENCES clientes(id_cliente);</pre>
+<p>Para removermos esta chave estrangeira:</p>
+<pre>ALTER TABLE Clientes
+DROP FOREIGN KEY clienteid_cliente;</pre>
+
+<Label>Para mais informações, acesse a documentação do MySQL 5.7:</label>
+<a href="https://dev.mysql.com/doc/refman/5.7/en/create-table-foreign-keys.html
+">https://dev.mysql.com/doc/refman/5.7/en/create-table-foreign-keys.html
+</a>
+<br><br>
+<label class="titulo" >CHECK</label>
+<p>O CHECK é utilizado para limitar a faixa de valores que pode ser colocado em uma coluna. No exemplo abaixo, estamos definindo que os valores para a coluna &#8220;id_pessoa&#8221; será maior que zero:</p>
+<pre>CREATE TABLE Pessoas
+(
+id_pessoa int NOT NULL,
+sobrenome varchar(255) NOT NULL,
+nome varchar(255),
+endereco varchar(255),
+id_cidade int
+CHECK (id_pessoa&gt;0)
+);</pre>
+<p>Alterando uma tabela já criada e inserindo o CHECK:</p>
+<pre>ALTER TABLE Pessoas
+ADD CONSTRAINT teste
+CHECK (id_pessoa&gt;0);</pre>
+<p>Para removermos esta chave estrangeira:</p>
+<pre>ALTER TABLE Pessoas
+DROP CONSTRAINT teste;</pre>
+
+
+<label class="titulo" >DEFAULT</label>
+<p>Utilizado para inserir um valor padrão em uma coluna, caso nenhum outro seja informado na hora do INSERT.</p>
+<pre>CREATE TABLE Pessoas
+(
+id_pessoa int NOT NULL,
+sobrenome varchar(255) NOT NULL,
+nome varchar(255),
+endereco varchar(255),
+cidade int DEFAULT "Maceió",
+data_cadastro date DEFAULT GETDATE()
+);</pre>
+<p>Após a tabela criada, podemos fazer assim:</p>
+<pre>ALTER TABLE Pessoas
+ALTER cidade SET DEFAULT "Maceió";</pre>
+<p>Para removermos esta chave estrangeira:</p>
+<pre>ALTER TABLE Pessoas
+ALTER cidade DROP DEFAULT;</pre>
+
+

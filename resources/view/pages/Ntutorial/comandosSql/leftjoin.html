@@ -1,0 +1,50 @@
+
+                    <p>Retorna todos os registros da tabela da esquerda, mesmo que não exista combinação com alguma linha da tabela da direita. Vejamos um exemplo de comando:</p>
+                    <pre>SELECT f.nome, f.salario, d.nome AS depto
+                    FROM tbl_funcionario AS f
+                    LEFT JOIN tbl_depto AS d
+                    ON f.id_depto = d.id_depto
+                    ORDER BY f.nome ASC;</pre>
+                    <p>Teremos como resultado:</p>
+                    <table width="400" border="1">
+                    <tbody>
+                    <tr>
+                    <td><strong>nome</strong></td>
+                    <td><strong>salario</strong></td>
+                    <td><strong>depto</strong></td>
+                    </tr>
+                    <tr>
+                    <td>Cristina</td>
+                    <td>1000</td>
+                    <td>(NULL)</td>
+                    </tr>
+                    <tr>
+                    <td>Diego</td>
+                    <td>2500</td>
+                    <td>T.I.</td>
+                    </tr>
+                    <tr>
+                    <td>João</td>
+                    <td>4000</td>
+                    <td>Comercial</td>
+                    </tr>
+                    <tr>
+                    <td>José</td>
+                    <td>8000</td>
+                    <td>Diretoria</td>
+                    </tr>
+                    <tr>
+                    <td>Marcos</td>
+                    <td>4500</td>
+                    <td>Comercial</td>
+                    </tr>
+                    <tr>
+                    <td>Maria</td>
+                    <td>5500</td>
+                    <td>Gerência</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <p>Com esta consulta, pegamos a funcionária Cristina que não pertence a nenhum departamento.</p>
+                    
+

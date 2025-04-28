@@ -1,0 +1,47 @@
+
+	
+	<div class="col-10" style="margin-top: 80px;">
+	
+        <div class="row">
+            <div class="col-9" >
+                <h5>{{title}}</h5>
+            </div>
+            <div class="col-3 text-right pl-0 ">
+            <a href="{{URL}}/localTrabalho/new">
+                    <button type="button" class="btn btn-success btn-round btn-sm " rel="tooltip" title="Novo">
+                        <i class="material-icons" style="font-size: 20px;">add</i>
+                    </button>
+            </a>
+                <a href="{{URL}}/localTrabalho">
+                    <button type="button" class="btn btn-warning btn-round btn-sm " rel="tooltip" title="Voltar">
+                        <i class="material-icons" style="font-size: 20px;">reply</i>
+                    </button>
+                </a>
+            </div>
+        </div>
+    
+        <form method="post">
+            
+            <div >
+                <label>Nome do Local de Trabalho:</label>
+                <input type="text"name="nome" class="form-control" value="{{nome}}" required>
+            </div>
+            
+            <div class="form-group mt-3">
+                <button class="btn btn-primary btn-sm btn-round botao borda" type="submit" rel="tooltip" title="Salvar">
+                     <i class="material-icons botao" >save</i>
+                 </button>
+            </div>
+        
+        </form>
+        </div>
+        <div class="col-3"></div>
+    
+    
+    
+    
+    <!-- Div onde aparecem as mensagens -->
+        <div id="toastBox"></div>
+        
+        
+    
