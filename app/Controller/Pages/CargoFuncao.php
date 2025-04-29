@@ -4,6 +4,7 @@ namespace App\Controller\Pages;
 
 use \App\Utils\View;
 use \App\Model\Entity\CargoFuncao as EntityCargoFuncao;
+use App\Utils\Funcoes;
 use \WilliamCosta\DatabaseManager\Pagination;
 
 class CargoFuncao extends Page{
@@ -30,6 +31,7 @@ class CargoFuncao extends Page{
 			$itens.= View::render('pages/cargoFuncao/item',[
 			         'id' => $ob->id,
 					'nome' => $ob->nome,
+					'permissoesDelete'=> Funcoes::permissoesDelete()
 					
 			]);
 		

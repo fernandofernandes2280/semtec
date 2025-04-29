@@ -58,7 +58,7 @@ class User extends Pessoa{
 		//Sucesso
 		return true;
 	}
-	//Método responsavel por retornar um usuario com base em seu e-mail
+	//Método responsavel por retornar um usuario com base em seu nome
 	public static function getUserByNome($nome){
 		return self::getUsers('nome = "'.$nome.'"')->fetchObject(self::class);
 				

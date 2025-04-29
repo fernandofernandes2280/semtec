@@ -3,6 +3,7 @@
 namespace App\Controller\Pages;
 
 use \App\Utils\View;
+use \App\Utils\Funcoes;
 use \App\Model\Entity\Feriado as EntityFeriado;
 use \WilliamCosta\DatabaseManager\Pagination;
 
@@ -35,6 +36,7 @@ class Feriado extends Page{
 			         'data' => date('d/m/Y', strtotime($ob->data)),
 					'nome' => $ob->nome,
 					'descricao' => $ob->descricao,
+					'permissoesDelete'=> Funcoes::permissoesDelete()
 					
 			]);
 		

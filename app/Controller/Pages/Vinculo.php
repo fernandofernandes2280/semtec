@@ -2,7 +2,9 @@
 
 namespace App\Controller\Pages;
 
+
 use \App\Utils\View;
+use \App\Utils\Funcoes;
 use \App\Model\Entity\Vinculo as EntityVinculo;
 use \WilliamCosta\DatabaseManager\Pagination;
 
@@ -33,6 +35,7 @@ class Vinculo extends Page{
 			$itens.= View::render('pages/vinculo/item',[
 			         'id' => $ob->id,
 					'nome' => $ob->nome,
+					'permissoesDelete'=> Funcoes::permissoesDelete()
 					
 			]);
 		

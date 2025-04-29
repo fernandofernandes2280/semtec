@@ -35,8 +35,7 @@ class Lotacao extends Page{
 			$itens.= View::render('pages/lotacao/item',[
 			         'id' => $ob->id,
 					'nome' => $ob->nome,
-			       //'excluirDisciplinaVisivel' => permissaoExcluirDisciplinas,
-					
+					'permissoesDelete'=> Funcoes::permissoesDelete()
 			]);
 		
 		}

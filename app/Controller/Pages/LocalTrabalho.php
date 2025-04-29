@@ -35,6 +35,7 @@ class LocalTrabalho extends Page{
 			$itens.= View::render('pages/localTrabalho/item',[
 			         'id' => $ob->id,
 					'nome' => $ob->nome,
+					'permissoesDelete'=> Funcoes::permissoesDelete()
 					
 			]);
 		

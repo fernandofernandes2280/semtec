@@ -174,7 +174,7 @@ class Ponto extends Page{
         $xUrl = explode('/', $url);
         
         if($id){
-            switch ($xUrl[3]) {
+            switch (end($xUrl)) {
                 case "porServidor":
                     //Quantidade total de registros
                     $results =  EntityServidor::getServidores('id = '.$id.'','nome asc',null);

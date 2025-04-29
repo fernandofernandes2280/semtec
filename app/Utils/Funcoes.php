@@ -72,6 +72,20 @@ public static  function removerAcentos($string) {
     return str_replace($acentos, $semAcentos, $string);
 }
 
+public static function permissoesDelete(){
+    self::init();
+
+    if($_SESSION['usuario']['id'] == 1){
+        $delete = '';
+    }else{
+        $delete = 'hidden';
+    }
+return $delete;
+
+
+
+}
+
 
 }
 ?>
