@@ -4,6 +4,45 @@
 use \App\Http\Response;
 use \App\Controller\Pages;
 
+//ROTA Login
+$obRouter->get('/login',[
+    'middlewares' => [
+            'require-admin-logout'
+    ],
+    
+    
+    function ($request){
+        return new Response(200, Pages\Login::getLogin($request));
+    }
+    ]);
+
+
+//ROTA Login POst
+$obRouter->post('/login',[
+    'middlewares' => [
+            'require-admin-logout'
+    ],
+    
+    function ($request){
+        
+        return new Response(200, Pages\Login::setLogin($request));
+    }
+    ]);
+
+//ROTA Logout
+$obRouter->get('/logout',[
+    'middlewares' => [
+            'require-admin-login'
+    ],
+    
+    function ($request){
+        return new Response(200, Pages\Login::setLogout($request));
+    }
+    ]);
+
+
+
+
 //ROTA HOME
 $obRouter->get('',[
     'middlewares' => [

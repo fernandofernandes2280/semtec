@@ -7,7 +7,7 @@ let successMsg = '<i class="fa-solid fa-circle-check"></i>Sucesso! ';
 let duplicatedMsg = '<i class="fa-solid fa-circle-xmark"></i>Erro: Dado(s) duplicado(s)!';
 let invalidCpfMsg = '<i class="fa-solid fa-circle-xmark"></i> Erro: CPF Inválido!';
 let errorMsg = '<i class="fa-solid fa-circle-xmark"></i> Erro!';
-let errorUser = '<i class="fa-solid fa-circle-xmark"></i> Erro: Email e/ou senha inválido(s)!';
+let errorLogin = '<i class="fa-solid fa-circle-xmark"></i> Erro: Email e/ou senha inválido(s)!';
 let errorPassword = '<i class="fa-solid fa-circle-xmark"></i> Erro: Email e/ou senha inválido(s)!';
 let invalidMsg = '<i class="fa-solid fa-circle-exclamation"></i> Atenção: {{statusMessage}} ';
 let alertDuplicatedCpfMsg = '<i class="fa-solid fa-circle-exclamation"></i> Atenção: CPF já Cadastrado ';
@@ -63,8 +63,8 @@ switch(mensagem) {
     case "alertDuplicatedCpf":
         showToast(alertDuplicatedCpfMsg);
         break;
-    case "errorUser":
-        showToast(errorUser);
+    case "errorLogin":
+        showToast(errorLogin);
         break;
     case "errorPassword":
         showToast(errorPassword);

@@ -19,7 +19,7 @@ $obRouter = new Router(URL);
 include __DIR__.'/routes/pages.php';
 
 //Inclui as rotas do Painel
-include __DIR__.'/routes/admin.php';
+//include __DIR__.'/routes/admin.php';
 
 //Inclui as da API
 include __DIR__.'/routes/api.php';

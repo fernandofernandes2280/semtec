@@ -31,13 +31,13 @@ class Login extends Page{
 		
 		if(!$obUser instanceof User){
 			//return self::getLogin($request);
-			$request->getRouter()->redirect('/?statusMessage=errorUser');
+			$request->getRouter()->redirect('/login/?statusMessage=errorLogin');
 			
 		}
 		
 		//Verifica a senha do usuário
 		if(!password_verify($senha, $obUser->senha)){
-			$request->getRouter()->redirect('/?statusMessage=errorPassword');
+			$request->getRouter()->redirect('/login/?statusMessage=errorLogin');
 		}
 		
 		//Cria a sessão de Login
@@ -52,7 +52,7 @@ class Login extends Page{
 		//Destroi a sessão de Login
 		SessionLogin::logout();
 		//redireciona o usuario para a tela de login
-		$request->getRouter()->redirect('/');
+		$request->getRouter()->redirect('/login');
 		
 		
 	}
