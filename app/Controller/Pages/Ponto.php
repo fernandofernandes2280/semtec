@@ -67,42 +67,47 @@ class Ponto extends Page{
         
     }
     
-    public static function dataSeparada(){
+    //Método respopnsavel por retornar a data atual baseado nas informacoces locais
+    public static function dataAtual(){
         //Define informações locais 
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         $timezone = new \DateTimeZone('America/Sao_Paulo');
         $agora = new \DateTime('now', $timezone);
-        $dataAtual = $agora->format('d/m/Y');
-        $dataUS = $agora->format('Y/m/d');
-        //$mesAtual = 5;
-        $mesAtual = $agora->format('m');
-        $anoAtual = $agora->format('Y'); 
 
-        $mesExtensoUS = date("F", strtotime($dataUS));
-        switch ($mesExtensoUS) {
-            case "January":
+        return $agora;
+    }
+
+    public static function dataSeparada($mes){
+
+        $dataAtual = self::dataAtual()->format('d/m/Y');
+        $mesAtual = $mes ?? self::dataAtual()->format('m');
+        $anoAtual = self::dataAtual()->format('Y'); 
+
+       // $mesExtensoUS = date("F", strtotime($dataUS));
+        switch ($mesAtual) {
+            case "1":
                 $mesExtensoBr = "janeiro"; break;
-            case "February":
+            case "2":
                 $mesExtensoBr = "fevereiro";break;
-            case "March":
+            case "3":
                 $mesExtensoBr = "março"; break;
-            case "April":
+            case "4":
                 $mesExtensoBr = "abril";break;
-            case "May":
+            case "5":
                 $mesExtensoBr = "maio"; break;
-            case "June":
+            case "6":
                 $mesExtensoBr = "junho";break;
-            case "July":
+            case "7":
                 $mesExtensoBr = "julho"; break;
-            case "August":
+            case "8":
                 $mesExtensoBr = "agosto";break;
-            case "September":
+            case "9":
                 $mesExtensoBr = "setembro"; break;
-            case "October":
+            case "10":
                 $mesExtensoBr = "outubro";break;
-            case "November":
+            case "11":
                 $mesExtensoBr = "novembro"; break;
-            case "December":
+            case "12":
                 $mesExtensoBr = "dezembro";break;
         }
 
@@ -110,28 +115,29 @@ class Ponto extends Page{
     }
 
     //Retorna a quantidade de dias do mês
-    public static function getQtdDias(){
+    public static function getQtdDias($mes){
         
-        $data = self::dataSeparada();
+        $data = self::dataSeparada($mes);
         
         //número de dias do mës
-       return  cal_days_in_month(CAL_GREGORIAN, $data['mesAtual'], $data['anoAtual']);
+       return  cal_days_in_month(CAL_GREGORIAN, $mes, $data['anoAtual']);
     }
     
     
     //Retorna dias do mês
-    public static function getDias(){
+    public static function getDias($mes){
         
         //$feriado = EntityFeriado::getFeriadoByData('2025-02-04')->nome;
         
-        $data = self::dataSeparada();
+        $data = self::dataSeparada($mes);
         
         //contador de dias
         $dia = 1;
         $diasItens = '';
-        while ($dia <= self::getQtdDias()) {
+        while ($dia <= self::getQtdDias($mes)) {
         //Data atual para saber o dia da semana    
-        $result = $dia."/".$data['mesAtual']."/".$data['anoAtual'];
+        //$result = $dia."/".$data['mesAtual']."/".$data['anoAtual'];
+        $result = $dia."/".$mes."/".$data['anoAtual'];
         
             
             $diasItens .= " 
@@ -166,9 +172,10 @@ class Ponto extends Page{
         $itens = '';
       
         $postVars = $request->getPostVars();
-       
+      
         $id = @$postVars['id'];
-        
+        $mes = $postVars['mes'] ?? self::dataAtual()->format('m');
+
         //extrai o ultimo texto da URL para direcionar o $id
         $url = $_SERVER['REQUEST_URI'];
         $xUrl = explode('/', $url);
@@ -201,7 +208,7 @@ class Ponto extends Page{
             $results =  EntityServidor::getServidores(Funcoes::condicao(),'nome asc',null);
         }
 
-        $data = self::dataSeparada();
+        $data = self::dataSeparada($mes);
         
         mb_internal_encoding('UTF-8');
 
@@ -217,8 +224,8 @@ class Ponto extends Page{
                 'vinculo' => EntityVinculo::getVinculoById($obServidor->vinculo)->nome,
                 'lotacao' => EntityLotacao::getLotacaoById($obServidor->lotacao)->nome,
                 'localTrabalho' =>EntityLocalTrabalho::getLocalTrabalhoById($obServidor->localTrabalho)->nome,
-                'diasItens' => self::getDias(),
-                'dias' => self::getQtdDias(),
+                'diasItens' => self::getDias($mes),
+                'dias' => self::getQtdDias($mes),
                 'data' => (mb_strtoupper($data['mesExtenso'])).' '.$data['anoAtual']
             ]);
             
@@ -239,12 +246,44 @@ class Ponto extends Page{
         return parent::getPanel('Folha de Ponto', $content,'ponto');
     }
     
+
+    //Método responsavel por listar os Mes e selecionar o atual no select option
+	public static function getSelectMes(){
+        
+        $mesAtual = self::dataAtual()->format('m');
+	    $resultados = '';
+	    $meses =  ['JANEIRO', 'FEVEREIRO','MARÇO','ABRIL', 'MAIO','JUNHO','JULHO', 'AGOSTO','SETEMBRO','OUTUBRO', 'NOVEMBRO','DEZEMBRO' ];
+        $tamanho = count($meses);
+	  
+	        $selected = '';
+            for ($i = 0; $i <$tamanho; $i++) {
+                
+                
+	            //seleciona a mes atual
+	            $i+1 == $mesAtual ? $selected = 'selected' : $selected = '';
+	            //View de Meses
+	            $resultados .= View::render('pages/selectOption/itemSelect',[
+	                'id' => $i+1,
+	                'nome' => $meses[$i],
+	                'selecionado' => $selected
+	            ]);
+	        }
+	        //retorna
+	        return $resultados;
+	  
+	        //retorna a listagem
+	        return $resultados;
+	    }
+	
+
     //Método GET responsavel por selecionar o servidor para folha de ponto
     public static function getPontoPorServidor(){
+        
         $content =  View::render('pages/ponto/form',[
             'title' => 'Selecione o Servidor:',
-            'novoItem' => 'new/validaCpf', 
-            'optionItens' => EntityServidor::getSelectServidor(null)
+            //'novoItem' => 'new/validaCpf', 
+            'optionItens' => EntityServidor::getSelectServidor(null),
+            'optionItensMes' => self::getSelectMes()
             
         ]);
         //Retorna a página completa
@@ -271,7 +310,8 @@ class Ponto extends Page{
 	    $content =  View::render('pages/ponto/form',[
 	        'title' => 'Selecione o Cargo / Função:',
 	        'novoItem' => 'cargoFuncao/new', 
-	        'optionItens' => EntityCargoFuncao::getSelectCargoFuncao(null)
+	        'optionItens' => EntityCargoFuncao::getSelectCargoFuncao(null),
+            'optionItensMes' => self::getSelectMes()
 	        
 	    ]);
 	    //Retorna a página completa
@@ -283,7 +323,8 @@ class Ponto extends Page{
 	    $content =  View::render('pages/ponto/form',[
 	        'title' => 'Selecione a Lotação:',
 	        'novoItem' => 'lotacao/new',
-	        'optionItens' => EntityLotacao::getSelectLotacao(null)
+	        'optionItens' => EntityLotacao::getSelectLotacao(null),
+            'optionItensMes' => self::getSelectMes()
 	        
 	    ]);
 	    //Retorna a página completa
@@ -295,7 +336,8 @@ class Ponto extends Page{
 	    $content =  View::render('pages/ponto/form',[
 	        'title' => 'Selecione o Local de Trabalho:',
 	        'novoItem' => 'localTrabalho/new',
-	        'optionItens' => EntityLocalTrabalho::getSelectLocalTrabalho(null)
+	        'optionItens' => EntityLocalTrabalho::getSelectLocalTrabalho(null),
+            'optionItensMes' => self::getSelectMes()
 	        
 	    ]);
 	    //Retorna a página completa
@@ -307,7 +349,8 @@ class Ponto extends Page{
 	    $content =  View::render('pages/ponto/form',[
 	        'title' => 'Selecione o Vínculo:',
 	        'novoItem' => 'vinculo/new',
-	        'optionItens' => EntityVinculo::getSelectVinculo(null)
+	        'optionItens' => EntityVinculo::getSelectVinculo(null),
+            'optionItensMes' => self::getSelectMes()
 	        
 	    ]);
 	    //Retorna a página completa
